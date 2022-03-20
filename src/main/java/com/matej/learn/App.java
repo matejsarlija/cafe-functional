@@ -55,6 +55,9 @@ public final class App {
 
         System.out.println(String.format("A name starting with %s: %s", startingLetter, 
             foundName.orElse("No name found")));
+
+        // Alternative approach
+        // foundName.ifPresent(name -> System.out.println("Hello " + name));
     }
 
 
@@ -75,26 +78,39 @@ public final class App {
             letter -> name -> name.startsWith(letter);
 
         final long countFriendsWithN = 
-        friends.stream()
-        .filter(startsWithLetter.apply("N")).count();
+            friends.stream()
+            .filter(startsWithLetter.apply("N")).count();
 
         final long countFriendsWithB =
-        friends.stream()
-        .filter(startsWithLetter.apply("B")).count();
+            friends.stream()
+            .filter(startsWithLetter.apply("B")).count();
 
         final long countEditorsWithN =
-        editors.stream()
-        .filter(startsWithN)
-        .count();
+            editors.stream()
+            .filter(startsWithN)
+            .count();
 
         final long countComradesWithN =
-        comrades.stream()
-        .filter(startsWithN)
-        .count();
+            comrades.stream()
+            .filter(startsWithN)
+            .count();
 
         //System.out.println(countFriendsWithB);
         pickNameElegant(friends, "N");
         pickNameElegant(friends, "Z");
+
+        System.out.println("Total number of characters in all names: " + 
+            friends.stream()
+            .mapToInt(name -> name.length())
+            .sum());
+
+        final Optional<String> aLongName = 
+            friends.stream()
+            .reduce((name1, name2) -> 
+            name1.length() >= name2.length() ? name1 : name2);
+
+        aLongName.ifPresent(name -> System.out.println(String.format("A longest name: %s", name)));
+
         
     }
 }
