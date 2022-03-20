@@ -29,6 +29,35 @@ public final class App {
         }
 
 
+    public static void pickName(final List<String> names, final String startingLetter) {
+        String foundName = null;
+
+        for(String name: names) {
+            if(name.startsWith(startingLetter)) {
+                foundName = name;
+                break;
+            }
+        }
+
+        System.out.println(String.format("A name starting with %s:", startingLetter));
+
+        if (foundName != null) {
+            System.out.println(foundName);
+        } else {
+            System.out.println("No name found");
+        }
+    }
+
+    public static void pickNameElegant(final List<String> names, final String startingLetter) {
+        final Optional<String> foundName = 
+        names.stream().filter(name -> name.startsWith(startingLetter))
+        .findFirst();
+
+        System.out.println(String.format("A name starting with %s: %s", startingLetter, 
+            foundName.orElse("No name found")));
+    }
+
+
     /**
      * Says hello to the world.
      * @param args The arguments of the program.
@@ -63,7 +92,9 @@ public final class App {
         .filter(startsWithN)
         .count();
 
-        System.out.println(countFriendsWithB);
+        //System.out.println(countFriendsWithB);
+        pickNameElegant(friends, "N");
+        pickNameElegant(friends, "Z");
         
     }
 }
