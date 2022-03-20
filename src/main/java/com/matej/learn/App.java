@@ -60,6 +60,10 @@ public final class App {
         // foundName.ifPresent(name -> System.out.println("Hello " + name));
     }
 
+    private static void printChar(int aChar) {
+        System.out.println((char) aChar);
+    }
+
 
     /**
      * Says hello to the world.
@@ -125,6 +129,18 @@ public final class App {
             System.out.println(friends.get(friends.size() - 1));
 
         System.out.println(String.join(", ", friends));
+
+        final String str = "w00t";
+
+        str.chars()
+        .forEach(System.out::println);
+
+        str.chars()
+        .forEach(App::printChar);
+
+        str.chars()
+        .mapToObj(ch -> Character.valueOf((char) ch))
+        .forEach(System.out::println);
 
         
     }
