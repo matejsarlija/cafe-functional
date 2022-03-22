@@ -2,6 +2,7 @@ package com.matej.learn;
 
 import java.util.*;
 import java.util.function.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -171,7 +172,7 @@ public final class App {
         people.stream().sorted(compareDescending)
         .collect(Collectors.toList());
 
-        printPeople("Sorted in descending order by age: ", descendingAge);
+        printPeople("Sorted in ascending order by age: ", ascendingAge);
 
         // Sort people by name
         printPeople("Sorted in ascending order by name", 
@@ -179,11 +180,34 @@ public final class App {
         .sorted((person1, person2) -> person1.getName().compareTo(person2.getName()))
         .collect(Collectors.toList()));
 
+        final Function<Person, String> byName = person -> person.getName();
+        final Function<Person, Integer> byAge = person -> person.getAge();
+        
+        // Print people in sorted order based on both age and name
+        printPeople("Sorted in ascending order by [age] and [name]", people.stream()
+        .sorted(Comparator.comparing(byAge).thenComparing(byName)).collect(Collectors.toList()));
+
         // Youngest person
         // feels like I'm learning linq here
         people.stream()
         .min(Person::ageDifference)
         .ifPresent(youngest -> System.out.println("Youngest p is : " + youngest));
+
+
+        // Older than 20
+        List<Person> olderThan20 = new ArrayList<>();
+
+        people.stream()
+        .filter(person -> person.getAge() > 20)
+        .forEach(person -> olderThan20.add(person));
+
+        System.out.println("Printing people older than 20: " + olderThan20);
+
+        List<Person> olderThan20Alt = 
+        people.stream().filter(person -> person.getAge() > 20)
+        .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
+        System.out.println("Printing people older than 20 [collected via collect()] " + olderThan20Alt);
         
     }
 }
