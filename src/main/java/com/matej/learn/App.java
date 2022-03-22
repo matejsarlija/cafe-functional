@@ -65,6 +65,11 @@ public final class App {
         System.out.println((char) aChar);
     }
 
+    public static void printPeople (final String message, final List<Person> people) {
+        System.out.println(message);
+        people.forEach(System.out::println);
+    }
+
 
     /**
      * Says hello to the world.
@@ -143,7 +148,7 @@ public final class App {
         .mapToObj(ch -> Character.valueOf((char) ch))
         .forEach(System.out::println);
 
-        // people
+        // People part
 
 
         final List<Person> people = Arrays.asList(
@@ -154,11 +159,31 @@ public final class App {
             new Person("Greg", 35)
         );
 
+        Comparator<Person> compareAscending = (person1, person2) -> person1.ageDifference(person2);
+
+        Comparator<Person> compareDescending = compareAscending.reversed();
+
         List<Person> ascendingAge =
-        people.stream().sorted((person1, person2) -> person1.ageDifference(person2))
+        people.stream().sorted(compareAscending)
         .collect(Collectors.toList());
 
-        printPeople("Sorted in ascending order by age: ", ascendingAge);
+        List<Person> descendingAge =
+        people.stream().sorted(compareDescending)
+        .collect(Collectors.toList());
+
+        printPeople("Sorted in descending order by age: ", descendingAge);
+
+        // Sort people by name
+        printPeople("Sorted in ascending order by name", 
+        people.stream()
+        .sorted((person1, person2) -> person1.getName().compareTo(person2.getName()))
+        .collect(Collectors.toList()));
+
+        // Youngest person
+        // feels like I'm learning linq here
+        people.stream()
+        .min(Person::ageDifference)
+        .ifPresent(youngest -> System.out.println("Youngest p is : " + youngest));
         
     }
 }
