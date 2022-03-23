@@ -9,6 +9,7 @@ import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.sql.rowset.spi.SyncResolver;
 
@@ -97,6 +98,17 @@ public final class App {
         }
 
         System.out.println("Count: " + files.size());;
+    }
+
+    public static void betterWay() {
+        List<File> files = 
+            Stream.of(new File(".").listFiles())
+            .flatMap(file -> file.listFiles() == null ?
+            Stream.of(file) : Stream.of(file.listFiles()))
+            .collect(Collectors.toList());
+
+        System.out.println("Count: " + files.size());
+            
     }
 
 
@@ -255,6 +267,7 @@ public final class App {
         final File[] files = new File(".").listFiles(File::isAbsolute);
         
         listTheHardWay();
+        betterWay();
 
     }
 }
