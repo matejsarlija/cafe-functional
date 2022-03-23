@@ -1,9 +1,16 @@
 package com.matej.learn;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import javax.sql.rowset.spi.SyncResolver;
 
 /**
  * Hello world!
@@ -73,6 +80,23 @@ public final class App {
 
     public static int boolToInt(Boolean b) {
         return Boolean.compare(b, false);
+    }
+
+    public static void listTheHardWay() {
+        List<File> files = new ArrayList<>();
+
+        File[] filesInCurrentDir = new File(".").listFiles();
+
+        for(File file : filesInCurrentDir) {
+            File[] filesInSubDir = file.listFiles();
+            if (filesInSubDir != null) {
+                files.addAll(Arrays.asList(filesInSubDir));
+            } else {
+                files.add(file);
+            }
+        }
+
+        System.out.println("Count: " + files.size());;
     }
 
 
@@ -213,19 +237,24 @@ public final class App {
         .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
         System.out.println("Printing people older than 20 [collected via collect()] " + olderThan20Alt);
-        System.out.println("One\nTwo\nThree");
+        
+        try {
+            Files.list(Paths.get(".")).filter(Files::isRegularFile).forEach(System.out::println);
 
-        Vehicle minivan = new Vehicle();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
 
-        int range;
+        try {
+            Files.newDirectoryStream(Paths.get("/home/oxi/Projects"), path -> path.toString().endsWith(".java"))
+            .forEach(System.out::println);
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
 
-        // assign to fields in minivan
-        minivan.passengers = 7;
-        //minivan.fuelcap = 16;
-        //minivan.mpg = 21;
-
-        // compute range of a full tank of gas
-        minivan.range();
+        final File[] files = new File(".").listFiles(File::isAbsolute);
+        
+        listTheHardWay();
 
     }
 }
