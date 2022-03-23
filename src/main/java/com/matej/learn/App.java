@@ -71,6 +71,10 @@ public final class App {
         people.forEach(System.out::println);
     }
 
+    public static int boolToInt(Boolean b) {
+        return Boolean.compare(b, false);
+    }
+
 
     /**
      * Says hello to the world.
@@ -160,6 +164,7 @@ public final class App {
             new Person("Greg", 35)
         );
 
+
         Comparator<Person> compareAscending = (person1, person2) -> person1.ageDifference(person2);
 
         Comparator<Person> compareDescending = compareAscending.reversed();
@@ -208,6 +213,19 @@ public final class App {
         .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
         System.out.println("Printing people older than 20 [collected via collect()] " + olderThan20Alt);
-        
+        System.out.println("One\nTwo\nThree");
+
+        Vehicle minivan = new Vehicle();
+
+        int range;
+
+        // assign to fields in minivan
+        minivan.passengers = 7;
+        //minivan.fuelcap = 16;
+        //minivan.mpg = 21;
+
+        // compute range of a full tank of gas
+        minivan.range();
+
     }
 }
