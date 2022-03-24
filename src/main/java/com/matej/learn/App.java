@@ -269,5 +269,43 @@ public final class App {
         listTheHardWay();
         betterWay();
 
+        MyClass t1 = new MyClass(20);
+        System.out.println(t1.x);
+
+        Vehicle minivan = new Vehicle(7, 16, 21);
+
+        System.out.println(minivan.fuelNeeded(100));
+
+        Pwr x = new Pwr(4.0, 2);
+        System.out.println(x.b + " raised to the power " + x.e + " " + x.getVal());
+
+        Pwr y = new Pwr(2.5, 1);
+        System.out.println(y.b + " raised to the power " + y.e + " " + y.getVal());
+
+        Pwr z = new Pwr(5.7, 0);
+        System.out.println(z.b + " raised to the power " + z.e + " " + z.getVal());
+
+        //int[] sample = new int[];
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int sum = 0;
+
+        for (int i: nums) {
+            System.out.println("Value of nums[x] is: " + i);
+            sum += i;
+        }
+        System.out.println("Sum is: " + sum);
+
+
+        sum = 0;
+        for(int j : nums) {
+            System.out.println("Value is : " + j);
+            sum += j;
+
+            if(j == 5) break;
+        }
+
+        System.out.println(sum);
+
+
     }
 }
