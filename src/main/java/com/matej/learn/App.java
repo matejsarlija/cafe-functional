@@ -12,6 +12,7 @@ import java.util.function.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import com.matej.learn.AssetUtil;
 
 import javax.sql.rowset.spi.SyncResolver;
 
@@ -271,18 +272,19 @@ public final class App {
         listTheHardWay();
         betterWay();
 
+        final List<Asset> assets = Arrays.asList(
+        new Asset(Asset.AssetType.BOND, 1000),
+        new Asset(Asset.AssetType.BOND, 2000),
+        new Asset(Asset.AssetType.STOCK, 3000),
+        new Asset(Asset.AssetType.STOCK, 4000)
+        );
 
-        try {
-            final Path path = Paths.get(".");
-            final WatchService watchService = 
-                path.getFileSystem().newWatchService();
+        System.out.println("Total of all assets: " + AssetUtil.totalAssetValues(assets, asset -> true));
 
-            path.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
-        } catch (IOException ex) {
-            System.err.println("Error at: " + ex);
-        }
+        System.out.println("Total of all bonds: " + 
+        AssetUtil.totalAssetValues(assets, asset -> asset.getType() == Asset.AssetType.BOND));
         
-
-
+        System.out.println("Total of all stocks: " + 
+        AssetUtil.totalAssetValues(assets, asset -> asset.getType() == Asset.AssetType.STOCK));
     }
 }
