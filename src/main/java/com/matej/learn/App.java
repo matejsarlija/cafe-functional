@@ -303,8 +303,27 @@ public final class App {
                 System.out.println("Error!");
         }
 
-        int xo = 16;
+        Block ob1 = new Block(10, 2, 5);
+        Block ob2 = new Block(10, 2, 5);
+        Block ob3 = new Block(4, 5, 5);
 
-        System.err.println(xo>>1);
+        System.out.println("ob1 has the same dimensions as ob2: " + ob1.sameBlock(ob2));
+        System.out.println("ob1 has the same dimensions as ob3: " + ob1.sameBlock(ob3));
+        System.out.println("ob1 has the same volume as ob3: " + ob1.sameVolume(ob3));
+
+        Test ob = new Test(15, 10);
+        System.out.println("ob.a and ob.b before call: " + 
+        ob.a + " " + ob.b);
+
+        ob.change(ob);
+
+        System.out.println("ob.a and ob.b after the call: " + 
+        ob.a +  " " + ob.b);
+
+        Sumation s1 = new Sumation(5);
+        Sumation s2 = new Sumation(s1);
+
+        System.out.println("s1.sum: " + s1.sum);
+        System.out.println("s2.sum: " + s2.sum);
     }
 }

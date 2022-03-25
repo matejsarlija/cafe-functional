@@ -1,9 +1,17 @@
 package com.matej.learn;
 
 public class MyClass {
-    int x;
+    private int alpha;
+    public int beta;
+    int gamma;
 
-    MyClass(int i) {
-        x = i;
+    void setAlpha(int a) {
+        alpha = a;
     }
+
+    int getAlpha() {
+        return alpha;
+    }
+
+    
 }
