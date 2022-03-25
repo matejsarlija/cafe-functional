@@ -302,5 +302,9 @@ public final class App {
             default:
                 System.out.println("Error!");
         }
+
+        int xo = 16;
+
+        System.err.println(xo>>1);
     }
 }
