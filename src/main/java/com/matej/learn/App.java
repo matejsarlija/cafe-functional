@@ -286,5 +286,21 @@ public final class App {
         
         System.out.println("Total of all stocks: " + 
         AssetUtil.totalAssetValues(assets, asset -> asset.getType() == Asset.AssetType.STOCK));
+
+        String matej = new String("matej");
+        System.out.println(matej.substring(1,matej.length()));
+
+        String command = "cancel";
+
+        switch(command) {
+            case "connect":
+                System.out.println("Connecting");
+            case "cancel":
+                System.out.println("Cancelling");
+            case "disconnect":
+                System.out.println("Disconnecting");
+            default:
+                System.out.println("Error!");
+        }
     }
 }
