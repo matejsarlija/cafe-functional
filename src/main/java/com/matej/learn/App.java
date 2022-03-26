@@ -113,6 +113,17 @@ public final class App {
         System.out.println("Count: " + files.size());
             
     }
+    
+    /* Reverse an array in-place. This method is destructive.*/
+    public static void reverseIn(int[] A) {
+        int temp;
+
+        for (int i = 0, j = A.length-1; i <= j; i++, j--) {
+            temp = A[i];
+            A[i] = A[j];
+            A[j] = temp;
+        }
+    }
 
 
     /**
@@ -333,6 +344,12 @@ public final class App {
         Shock.shrink(gear);
         Shock.shrink(Shock.starter());
         System.out.println(gear.bang);
+
+        int[] arr = {1, 2, 3, 4, 5};
+        App.reverseIn(arr);
+        for (int x: arr) {
+            System.out.print(x);
+        }
         
     }
 }
