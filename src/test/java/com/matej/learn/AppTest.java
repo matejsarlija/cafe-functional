@@ -1,7 +1,11 @@
 package com.matej.learn;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import java.util.Arrays;
+
 
 /**
  * Unit test for simple App.
@@ -29,5 +33,17 @@ class AppTest {
         
 
 
+    }
+
+    @Test
+    public void reverseAnArrayInPlaceDestroysIt() {
+        
+        int[] origArray = {1, 2, 3, 4, 5};
+        
+        App.reverseIn(origArray);
+        
+        int[] testArray = {1, 2, 3, 4, 5};
+        
+        assertFalse(Arrays.equals(origArray, testArray));
     }
 }
