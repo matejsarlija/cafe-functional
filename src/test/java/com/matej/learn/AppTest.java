@@ -2,6 +2,7 @@ package com.matej.learn;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import java.util.Arrays;
@@ -45,5 +46,29 @@ class AppTest {
         int[] testArray = {1, 2, 3, 4, 5};
         
         assertFalse(Arrays.equals(origArray, testArray));
+    }
+
+    @Test
+    public void reverseAnEvenArraySuccessfully() {
+        
+        int[] origArray = {1, 2, 3, 4};
+        
+        App.reverseIn(origArray);
+        
+        int[] testArray = {4, 3, 2, 1};
+        
+        assertArrayEquals(origArray, testArray);
+    }
+
+    @Test
+    public void reversesASingleMemberArray() {
+        
+        int[] origArray = {1};
+        
+        App.reverseIn(origArray);
+        
+        int[] testArray = {1};
+        
+        assertArrayEquals(origArray, testArray);
     }
 }
