@@ -328,12 +328,11 @@ public final class App {
 
         System.out.println("Codepoint for A is " + ((char) 0));
 
-        Avatar foo1 = new Avatar("one", "two");
-        Avatar foo2 = new Avatar("three", "four");
-        System.out.println(foo1.electricity + foo1.fluid);
-        foo1.electricity = "I declare";
-        foo1.fluid = "a thumb war";
-        System.out.println(foo2.electricity + foo2.fluid);
+        Shock gear = new Shock(200);
+        System.out.println(gear.bang);
+        Shock.shrink(gear);
+        Shock.shrink(Shock.starter());
+        System.out.println(gear.bang);
         
     }
 }
