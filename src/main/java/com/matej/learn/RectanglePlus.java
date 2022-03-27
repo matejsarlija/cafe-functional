@@ -39,6 +39,7 @@ public class RectanglePlus implements Relatable{
     // a method required to implement the Relatable interface
     public int isLargerThan(Relatable other) {
         RectanglePlus otherRect = (RectanglePlus) other;
+        
         if (this.getArea() < otherRect.getArea()) return -1;
         else if (this.getArea() > otherRect.getArea()) return 1;
         else return 0;
