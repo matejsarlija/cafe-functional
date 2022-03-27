@@ -125,6 +125,22 @@ public final class App {
         }
     }
 
+    /** The largest value in array A, or null if A is empty. */
+    public static Comparable max(Comparable[] A) {
+        if (A.length == 0) return null;
+
+        Comparable result;
+        result = A[0];
+
+        for (int i = 1; i < A.length; i +=1) {
+            if (result.compareTo(A[i]) < 0) {
+                result = A[i];
+            }
+        }
+
+        return result;
+    }
+
 
     /**
      * Says hello to the world.
