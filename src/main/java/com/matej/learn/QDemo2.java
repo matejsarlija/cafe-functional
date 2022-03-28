@@ -20,6 +20,15 @@ class Queue {
         }
     }
 
+    Queue(char[] a) {
+        putloc = 0;
+        getloc = 0;
+
+        q = new char[a.length];
+
+        for(int i = 0; i < a.length; i++) put (a[i]);
+    }
+
     // puts a character into the queue
     void put(char ch) {
         if(putloc == q.length) {

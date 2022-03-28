@@ -338,15 +338,6 @@ public final class App {
         System.out.println("ob1 has the same dimensions as ob3: " + ob1.sameBlock(ob3));
         System.out.println("ob1 has the same volume as ob3: " + ob1.sameVolume(ob3));
 
-        Test ob = new Test(15, 10);
-        System.out.println("ob.a and ob.b before call: " + 
-        ob.a + " " + ob.b);
-
-        ob.change(ob);
-
-        System.out.println("ob.a and ob.b after the call: " + 
-        ob.a +  " " + ob.b);
-
         Sumation s1 = new Sumation(5);
         Sumation s2 = new Sumation(s1);
 
@@ -366,6 +357,18 @@ public final class App {
         for (int x: arr) {
             System.out.print(x);
         }
+
+        Test testA = new Test(1);
+        Test testB = new Test(2);
+
+        System.out.println("Variable in class testA: " + testA.a);
+        System.out.println("Variable in class testB: " + testB.a);
+
+        testA.change(testB);
+        
+        System.out.println("Variable in class testA after exchange with testB: " + testA.a);
+        System.out.println("Variable in class testB after exchange with testA: " + testB.a);
+
         
     }
 }

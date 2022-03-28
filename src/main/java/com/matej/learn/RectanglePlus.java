@@ -1,6 +1,6 @@
 package com.matej.learn;
 
-public class RectanglePlus implements Relatable{
+public class RectanglePlus implements Relatable {
     public int width = 0;
     public int height = 0;
     public Point origin;
