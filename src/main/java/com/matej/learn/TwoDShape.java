@@ -13,6 +13,17 @@ public class TwoDShape {
         height = h;
     }
 
+    // Construct an object with equal width and height
+    TwoDShape(double x) {
+        width = height = x;
+    }
+
+    // Construct an object with equal width and height
+    TwoDShape(TwoDShape obj) {
+        width = obj.width;
+        height = obj.height;
+    }
+
     // accessors for width and height
     double getWidth() { return width; }
     double getHeight() { return height; }
@@ -30,13 +41,21 @@ class Triangle extends TwoDShape {
     // Constructor
     Triangle(String s, double w, double h) {
         super(w, h);
-        
-        /* no longer necessary since constructor change 
-        setWidth(w);
-        setHeight(h);
-        */
 
         style = s;
+    }
+
+    // one argument constructor
+    Triangle(double x) {
+        super(x);
+
+        style = "filled";
+    }
+
+    // Construct an object from an object
+    Triangle(Triangle obj) {
+        super(obj);
+        style = obj.style;
     }
 
     double area() {

@@ -346,12 +346,6 @@ public final class App {
 
         System.out.println("Codepoint for A is " + ((char) 0));
 
-        Shock gear = new Shock(200);
-        System.out.println(gear.bang);
-        Shock.shrink(gear);
-        Shock.shrink(Shock.starter());
-        System.out.println(gear.bang);
-
         int[] arr = {1, 2, 3, 4, 5};
         App.reverseIn(arr);
         for (int x: arr) {
@@ -368,6 +362,13 @@ public final class App {
         
         System.out.println("Variable in class testA after exchange with testB: " + testA.a);
         System.out.println("Variable in class testB after exchange with testA: " + testB.a);
+
+        Triangle t1 = new Triangle("outlined", 8.0, 12.0);
+
+        // make a copy of t1
+        Triangle t2 = new Triangle(t1);
+
+        
 
         
     }
