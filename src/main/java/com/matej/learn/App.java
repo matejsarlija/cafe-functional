@@ -368,7 +368,18 @@ public final class App {
         // make a copy of t1
         Triangle t2 = new Triangle(t1);
 
-        
+        ByTwos twoOb = new ByTwos();
+        ByThrees threeOb = new ByThrees();
+
+        Series ob;
+
+        for(int i = 0; i < 5; i++) {
+            ob = twoOb;
+            System.out.println("Next ByTwos value is " + ob.getNext());
+            
+            ob = threeOb;
+            System.out.println("Next ByThrees value is " + ob.getNext());
+        }
 
         
     }
