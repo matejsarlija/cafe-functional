@@ -1,6 +1,8 @@
 READING LIST
 ------------
 
-Going through the book Functional Programming in Java by Venkat Subramaniam.
+Going through self-imposed Java Curriculum :
 
-Scala is strong here.
+Reading two intro books to Java so I can transfer to "Modern Java in Action".
+
+Interested in functional programming techniques.

@@ -18,9 +18,13 @@ class ExcDemo2 {
         try {
             ExcTest.genException();
         } catch (ArrayIndexOutOfBoundsException exc) {
-            System.out.println("Index out of bounds");
+            System.out.println("Standard message is: ");
+            System.out.println(exc);
+            System.out.println("\nStack trace: ");
+            exc.printStackTrace();
+            System.out.println("There was maybe a deeper cause: " + exc.getCause());
+            
         }
-
         System.out.println("After catch statement");
     }
 }

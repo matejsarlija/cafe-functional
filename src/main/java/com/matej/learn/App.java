@@ -363,24 +363,16 @@ public final class App {
         System.out.println("Variable in class testA after exchange with testB: " + testA.a);
         System.out.println("Variable in class testB after exchange with testA: " + testB.a);
 
-        Triangle t1 = new Triangle("outlined", 8.0, 12.0);
+        int[] numbers = {4, 8, 16, 32, 64, 128, 256, 512};
+        int[] denumbers = {2, 0, 4, 4, 0, 8};
 
-        // make a copy of t1
-        Triangle t2 = new Triangle(t1);
-
-        ByTwos twoOb = new ByTwos();
-        ByThrees threeOb = new ByThrees();
-
-        Series ob;
-
-        for(int i = 0; i < 5; i++) {
-            ob = twoOb;
-            System.out.println("Next ByTwos value is " + ob.getNext());
-            
-            ob = threeOb;
-            System.out.println("Next ByThrees value is " + ob.getNext());
+        try {
+            System.out.println("Before throw");
+            throw new ArithmeticException();
+        } catch (ArithmeticException exc) {
+            System.out.println("Caught the exception.");
         }
-
+        System.out.println("After try / catch block.");
         
     }
 }
