@@ -1,6 +1,6 @@
 package com.matej.learn;
 
-public class FixedQueue implements ICharQ{
+public class FixedQueue implements ICharQ {
     private char[] q;
     private int putloc, getloc;
 
@@ -11,20 +11,18 @@ public class FixedQueue implements ICharQ{
     }
     
     // put a character into the queue
-    public void put(char ch) {
+    public void put(char ch) throws QueueFullException {
         if (putloc == q.length) {
-            System.out.println(" - Queue is full");
-            return;
+            throw new QueueFullException(q.length);
         }
         
         q[putloc++] = ch;
     }
 
     // get a character from the queue
-    public char get() {
+    public char get() throws QueueEmptyException {
         if (getloc == putloc) {
-            System.out.println(" - Queue is empty");
-            return (char) 0;
+            throw new QueueEmptyException();
         }
 
         return q[getloc++];

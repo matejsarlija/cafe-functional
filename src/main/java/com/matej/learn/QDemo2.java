@@ -52,7 +52,6 @@ class Queue {
 
 class QDemo {
     
-
     public static void main(String[] args) {
         Queue bigQueue = new Queue(100);
         Queue smallQueue = new Queue(4);
